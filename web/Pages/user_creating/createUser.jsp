@@ -29,7 +29,7 @@
                 if (CommonUtils.isNullOrEmpty(username) || CommonUtils.isNullOrEmpty(password)) {
                     out.println("<p>Please provide both username and password.</p>");
                 } else {
-                    UserDAO userDAO = DAOFactory.getUserDAO();
+                    UserDAO userDAO = DAOFactory.addUserDAO();
                     User user = UserUtil.createUser(username, password);
                     try {
                         userDAO.createUser(user);
