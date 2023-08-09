@@ -8,9 +8,10 @@ package dao;
 import user.User;
 
 public class UserUtil {
-    public static User createUser(String username, String password) {
+    public static User createUser(String username,String email, String password) {
         User user = new User();
         user.setUsername(username);
+        user.setEmail(email);
         user.setPassword(password);
         return user;
     }

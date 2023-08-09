@@ -16,21 +16,25 @@
         <h2>User Creation</h2>
         <form name="userForm" method="post" action="createUser.jsp" onsubmit="return validateForm()">
             Username: <input type="text" name="username"><br>
+            Email:    <input type="text" name="email"><br>
             Password: <input type="password" name="password"><br>
             <input type="submit" value="Create User">
+            <input type="button" value="Reset" onclick="resetForm()">
+            
         </form>
         
         <%
             if (request.getMethod().equalsIgnoreCase("post")) {
                 String username = request.getParameter("username");
+                String email = request.getParameter("email");
                 String password = request.getParameter("password");
                 
                 // Validate input
-                if (CommonUtils.isNullOrEmpty(username) || CommonUtils.isNullOrEmpty(password)) {
+                if (CommonUtils.isNullOrEmpty(username) || CommonUtils.isNullOrEmpty(password)||CommonUtils.isNullOrEmpty(email)) {
                     out.println("<p>Please provide both username and password.</p>");
                 } else {
                     UserDAO userDAO = DAOFactory.addUserDAO();
-                    User user = UserUtil.createUser(username, password);
+                    User user = UserUtil.createUser(username,email,password);
                     try {
                         userDAO.createUser(user);
                         out.println("<p>User created successfully.</p>");

@@ -21,10 +21,11 @@ public class UserDAOImpl implements UserDAO {
         try {
             connection = DBUtil.getConnection();
 
-            String insertQuery = "INSERT INTO users (username, password) VALUES (?, ?)";
+            String insertQuery = "INSERT INTO users (username,email, password) VALUES (?, ?,?)";
             preparedStatement = connection.prepareStatement(insertQuery);
             preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(2,user.getEmail());
+            preparedStatement.setString(3, user.getPassword());
 
             int rowsAffected = preparedStatement.executeUpdate();
 
