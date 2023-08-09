@@ -11,7 +11,7 @@ import dao.UserDAOImpl;
  * @author TTSADMIN
  */
 public class DAOFactory {
-    public static UserDAO addUserDAO() {
+    public static UserDAO getUserDAO() {
         return new UserDAOImpl();
     }
 }
